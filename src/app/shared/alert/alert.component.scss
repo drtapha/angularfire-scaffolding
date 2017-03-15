@@ -1,0 +1,32 @@
+$error : red; 
+$default : white; 
+$success : green; 
+.alert{
+    padding: 5px;
+    width: 100%;  
+    
+    p{
+        text-align: center; 
+    }
+    &.alert-fixed{
+        position: fixed; 
+         z-index: 10;
+    }
+    &.alert-default{
+    background: $default; 
+   }
+   &.alert-success{
+    background: $success; 
+   }
+   &.alert-error {
+    background: $error; 
+   }
+  
+}
+
+ .alert-icon{
+       position: fixed; 
+      
+       top : 5px; 
+       right: 5px; 
+   }

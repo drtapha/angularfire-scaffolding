@@ -1,0 +1,21 @@
+$color : green; 
+
+.auth{
+    background: $color; 
+    height: 100vh; 
+    align-items: center; 
+    justify-content: center; 
+
+    &-form{
+        width: 80%; 
+        background: red;
+        @media screen and (min-width : 500px){
+             width: 500px; 
+        }
+    }
+    
+}
+
+.gutter{
+    margin-bottom: 20px; 
+}

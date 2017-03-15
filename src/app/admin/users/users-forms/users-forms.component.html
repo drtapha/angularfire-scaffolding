@@ -1,0 +1,35 @@
+<h2 md-dialog-title> Créer un nouvel utilisateur </h2>
+<form #userForm="ngForm" (ngSubmit)="createOrUpdate(email)">
+    <md-dialog-content class="flex-container" fxLayout="column">
+        <div class="flex-container" fxLayout="row">
+            <md-input-container class="flex-item" fxFlex>
+                <input md-input placeholder="Prénom" name="firstname" [(ngModel)]="user.firstname">
+            </md-input-container>
+            <md-input-container class="flex-item" fxFlex>
+                <input md-input placeholder="Nom" name="lastname" [(ngModel)]="user.lastname">
+            </md-input-container>
+        </div>
+        <md-input-container>
+            <input md-input type="email" placeholder="email" name="email" [(ngModel)]="user.email" #email="ngModel" required>
+        </md-input-container>
+        <span *ngIf="email.touched && email.invalid">
+            Ce champ est requis
+        </span>
+        <md-input-container>
+            <input md-input type="password" placeholder="Mot de pass" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+        </md-input-container>
+        <span *ngIf="password.touched && password.invalid">
+            Ce champ est requis
+        </span>
+        <md-input-container>
+            <input md-input type="password" placeholder="Re-tape password" name="confirm" [(ngModel)]="confirm" #confirmError="ngModel" required>
+        </md-input-container>
+        <span *ngIf="confirmError.touched && confirmError.invalid">
+            Ce champ est requis
+        </span>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <button md-button color="primary" [disabled]="!userForm.valid">Créer</button>
+        <button md-button md-dialog-close> Annuler</button>
+    </md-dialog-actions>
+</form>

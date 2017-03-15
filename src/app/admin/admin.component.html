@@ -1,0 +1,31 @@
+<div class="flex-container container" fxLayout="column">
+    <md-toolbar color="primary" class="flex-container" fxLayout="column">
+        <span>sbm technology</span>
+        <span class="flex-item" fxFlex></span>
+        <span>{{user?.email}}</span>
+        <button md-icon-button (click)="logout()"><md-icon>power_settings_new</md-icon></button>
+    </md-toolbar>
+    <md-sidenav-container class="flex-item" fxFlex>
+        <md-sidenav opened="true" mode="side">
+            <md-nav-list>
+                <md-list-item>
+                    <span md-line>Réduire</span>
+                    <button md-icon-button (click)="showInfo(link)">
+                        <md-icon>keyboard_arrow_left</md-icon>
+                    </button>
+                </md-list-item>
+                <md-divider></md-divider>
+                <h3 md-subheader>Gérer</h3>
+                <md-list-item>
+                    <a md-line routerLink="users">Utilisateurs</a>
+                    <button md-icon-button (click)="showInfo(link)">
+                        <md-icon>keyboard_arrow_left</md-icon>
+                    </button>
+                </md-list-item>
+            </md-nav-list>
+        </md-sidenav>
+        <div class="main">
+            <router-outlet></router-outlet>
+        </div>
+    </md-sidenav-container>
+</div>
