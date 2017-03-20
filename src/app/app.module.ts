@@ -12,6 +12,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 
 import { UserService } from './services/user.service';
+import { AuthGuardService } from './services/auth-guard';
 
 import { AppComponent } from './app.component';
 
@@ -38,7 +39,7 @@ import { HomeComponent } from './main/home/home.component';
   ],
   providers: [
     UserService,
-    AuthModule
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

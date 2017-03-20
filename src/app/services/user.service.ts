@@ -9,7 +9,7 @@ import { User, Credential } from '../entities/user';
 
 @Injectable()
 export class UserService {
-
+ public isLoggedIn:boolean; 
   constructor(private af: AngularFire) { }
 
   register(user: User) {

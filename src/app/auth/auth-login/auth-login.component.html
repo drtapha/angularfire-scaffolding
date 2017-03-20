@@ -5,10 +5,10 @@
             <md-card-content>
                 <form class="flex-container" fxLayout="column" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)"> 
                     <md-input-container fxFlex class="gutter">
-                        <input md-input placeholder="email" type="email" name="email" [(ngModel)]="email" #emailCtrl="ngModel" required>
+                        <input mdInput placeholder="email" type="email" name="email" [(ngModel)]="email" #emailCtrl="ngModel" required>
                     </md-input-container>
                     <md-input-container fxFlex class="gutter">
-                        <input md-input placeholder="password" type="password" name="password" [(ngModel)]="password" required>
+                        <input mdInput placeholder="password" type="password" name="password" [(ngModel)]="password" required>
                     </md-input-container>
                     <a [routerLink]="['/reset_password']" class="gutter">mot de pass oublié</a>
                     <button md-button color="primary" [disabled]="loginForm.invalid || submitted">Connexion</button>
