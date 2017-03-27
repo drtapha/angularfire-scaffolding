@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import 'hammerjs';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { UserModule } from './users/user.module';

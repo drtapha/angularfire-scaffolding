@@ -11,6 +11,7 @@ const routes : Routes = [
       component : HomeComponent,
       canActivate : [AuthGuardService]
     }
+
   
 ]
 
@@ -21,7 +22,6 @@ const routes : Routes = [
   ],
   exports : [
     RouterModule
-  ],
-  declarations: []
+  ]
 })
 export class AppRoutingModule { }

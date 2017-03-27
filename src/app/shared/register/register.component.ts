@@ -19,8 +19,10 @@ export class RegisterComponent implements OnInit {
   }
 
   createOrUpdate(){
-    this.userService.register(this.user).then(()=>{
+    this.userService.register(this.user).then((user)=>{
       alert("Utilisateur ajouté avec succés"); 
+      user.auth.updateProfile({displayName : "drtapha",photoURL:""}).then(data => console.log(data))
+      .catch(error=> console.log(error));
     })
   }
 

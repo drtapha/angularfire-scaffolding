@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AngularFire, AuthMethods, AuthProviders } from 'angularfire2';
-import { auth } from 'firebase';
+import { auth, storage } from 'firebase';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -28,10 +28,14 @@ export class UserService {
 
   resetPassword(email : string){
     return auth().sendPasswordResetEmail(email);
+
+    
   }
 
   logout() {
     return this.af.auth.logout();
+   // storage().ref().
+    
   }
   getCurrentUser() {
     return this.af.auth.map(user => {
