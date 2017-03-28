@@ -7,12 +7,13 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from 'angularfire2';
 
+import 'hammerjs';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 
-import { UserService } from './services/user.service';
-import { AuthGuardService } from './services/auth-guard';
+import { AuthService, AuthGuardService } from './services';
 
 import { AppComponent } from './app.component';
 
@@ -38,7 +39,7 @@ import { HomeComponent } from './main/home/home.component';
     AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [
-    UserService,
+    AuthService,
     AuthGuardService
   ],
   bootstrap: [AppComponent]

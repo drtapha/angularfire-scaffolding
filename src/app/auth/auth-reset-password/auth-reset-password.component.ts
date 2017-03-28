@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-
-import { UserService } from '../../services/user.service';
+import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../../services';
+import { Submit } from '../../entities';
 
 @Component({
   selector: 'sbm-auth-reset-password',
   templateUrl: './auth-reset-password.component.html',
   styleUrls: ['./auth-reset-password.component.scss']
 })
-export class AuthResetPasswordComponent implements OnInit {
-
-  constructor(private userService : UserService) { }
+export class AuthResetPasswordComponent extends Submit implements OnInit {
+  emailCtrl : FormControl;
+  constructor(private auth : AuthService) { super(); }
 
   ngOnInit() {
+    this.emailCtrl = new FormControl('', Validators.email); 
   }
 
   resetPassword(email){
-     
-      this.userService.resetPassword(email).then(_=> console.log("email enregistrer")); 
+      this.toggleSubmit();
+      this.auth.resetPassword(email).then(_=> console.log("email enregistrer")); 
   }
 }

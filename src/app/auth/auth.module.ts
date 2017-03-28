@@ -6,6 +6,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthLoginComponent } from './auth-login/auth-login.component';
 import { AuthResetPasswordComponent } from './auth-reset-password/auth-reset-password.component';
 import { AuthRegisterComponent } from './auth-register/auth-register.component';
+import { AuthProfilComponent } from './auth-profil/auth-profil.component';
 @NgModule({
   imports: [
     SharedModule,
@@ -15,7 +16,8 @@ import { AuthRegisterComponent } from './auth-register/auth-register.component';
   declarations: [
     AuthLoginComponent,
     AuthResetPasswordComponent,
-    AuthRegisterComponent
+    AuthRegisterComponent,
+    AuthProfilComponent
   ]
 })
 export class AuthModule { }

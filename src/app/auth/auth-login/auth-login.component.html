@@ -3,13 +3,19 @@
     <div class="auth-form">
         <md-card>
             <md-card-content>
-                <form class="flex-container" fxLayout="column" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)"> 
+                <form class="flex-container" fxLayout="column" #loginForm="ngForm" (ngSubmit)="login()">
                     <md-input-container fxFlex class="gutter">
-                        <input mdInput placeholder="email" type="email" name="email" [(ngModel)]="email" #emailCtrl="ngModel" required>
+                        <input mdInput placeholder="email" type="email" name="email" [(ngModel)]="credentials.email" [formControl]="emailCtrl" required>
                     </md-input-container>
+                    <div class="error" *ngIf="emailCtrl.touched && emailCtrl.invalid">
+                        <span>Format email incorrect</span>
+                    </div>
                     <md-input-container fxFlex class="gutter">
-                        <input mdInput placeholder="password" type="password" name="password" [(ngModel)]="password" required>
+                        <input mdInput placeholder="password" type="password" name="password" [(ngModel)]="credentials.password" #passwordCtrl="ngModel" required>
                     </md-input-container>
+                    <div class="error" *ngIf="passwordCtrl.touched && passwordCtrl.invalid">
+                        <span >Ce champ est requis</span>
+                    </div>
                     <a [routerLink]="['/reset_password']" class="gutter">mot de pass oublié</a>
                     <button md-button color="primary" [disabled]="loginForm.invalid || submitted">Connexion</button>
                 </form>

@@ -24,6 +24,6 @@ import { UsersFormsComponent } from './users-forms/users-forms.component';
   entryComponents: [
     UsersFormsComponent
   ],
- // providers: [UserService]
+
 })
 export class UserModule { }

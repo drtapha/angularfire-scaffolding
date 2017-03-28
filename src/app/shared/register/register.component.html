@@ -1,36 +1,29 @@
-<form #userForm="ngForm" (ngSubmit)="createOrUpdate(email)" >
-  <div class="flex-container" fxLayout="column">
-        <div class="flex-container" fxLayout="row">
-            <md-input-container class="flex-item" fxFlex>
-                <input mdInput placeholder="Prénom" name="firstname" [(ngModel)]="user.firstname">
-            </md-input-container>
-            <md-input-container class="flex-item" fxFlex>
-                <input mdInput placeholder="Nom" name="lastname" [(ngModel)]="user.lastname">
-            </md-input-container>
+<form [formGroup]="userForm" (ngSubmit)="register()">
+    <div class="flex-container" fxLayout="column">
+        <md-input-container class="gutter">
+            <input mdInput type="email" placeholder="email" name="email" formControlName="email" required>
+        </md-input-container>
+        <div class="error" *ngIf="emailCtrl.touched && emailCtrl.invalid">
+            <span *ngIf="emailCtrl.hasError('required') else emailTemplate">Ce champ est requis</span>
+            <ng-template #emailTemplate>Format email incorrect</ng-template>
         </div>
-        <md-input-container>
-            <input mdInput type="email" placeholder="email" name="email" [(ngModel)]="user.email" #email="ngModel" required>
-        </md-input-container>
-        <span *ngIf="email.touched && email.invalid">
-            Ce champ est requis
-        </span>
-        <md-input-container>
-            <input mdInput type="password" placeholder="Mot de pass" name="password" [(ngModel)]="user.password" #password="ngModel" required>
-        </md-input-container>
-        <span *ngIf="password.touched && password.invalid">
-            Ce champ est requis
-        </span>
-        <md-input-container>
-            <input mdInput type="password" placeholder="Re-tape password" name="confirm" [(ngModel)]="confirm" #confirmError="ngModel" required>
-        </md-input-container>
-        <span *ngIf="confirmError.touched && confirmError.invalid">
-            Ce champ est requis
-        </span>
+        <div formGroupName="passwordForm" class="flex-container" fxLayout="column">
+            <md-input-container class="gutter">
+                <input mdInput type="password" placeholder="Mot de pass" name="password" formControlName="password">
+            </md-input-container>
+            <div class="error" *ngIf="password.touched && password.invalid">
+                <span *ngIf="password.hasError('required')">Ce champ est requis</span>
+            </div>
+            <md-input-container class="gutter">
+                <input mdInput type="password" placeholder="Re-tape password" name="confirm" formControlName="confirmPassword">
+            </md-input-container>
+            <div class="error" *ngIf="confirmPassword.touched && confirmPassword.invalid">
+                <span *ngIf="confirmPassword.hasError('required')">Ce champ est requis</span>
+            </div>
+            <div class="error" *ngIf="confirmPassword.valid">
+                <span *ngIf="passwordForm.hasError('passwordMatch')">les mots de pass ne se correspondent pas</span>
+            </div>
+        </div>
     </div>
-    
-    <button md-button color="primary" [disabled]="!userForm.valid">Créer</button>
-        
-    
-
-
+    <button md-button color="primary" [disabled]="userForm.invalid || submitted">Créer</button>
 </form>

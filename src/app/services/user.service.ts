@@ -9,38 +9,6 @@ import { User, Credential } from '../entities/user';
 
 @Injectable()
 export class UserService {
- public isLoggedIn:boolean; 
-  constructor(private af: AngularFire) { }
-
-  register(user: User) {
-    return this.af.auth.createUser({
-      email: user.email,
-      password: user.password
-    })
-  }
-
-  login(credentials: Credential) {
-    return this.af.auth.login(credentials, {
-      provider: AuthProviders.Password,
-      method: AuthMethods.Password
-    });
-  }
-
-  resetPassword(email : string){
-    return auth().sendPasswordResetEmail(email);
-
-    
-  }
-
-  logout() {
-    return this.af.auth.logout();
-   // storage().ref().
-    
-  }
-  getCurrentUser() {
-    return this.af.auth.map(user => {
-      if (user) return user.auth;
-    });
-  }
+  constructor(){}
 
 }

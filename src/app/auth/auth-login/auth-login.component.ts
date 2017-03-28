@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ComponentFactoryResolver, ComponentRef } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddAlertDirective } from '../../shared/alert/ad-alert.directive';
 import { AlertComponent } from '../../shared/alert/alert.component';
 
-import { Credential } from '../../entities/user';
+import { Submit, Credential } from '../../entities';
 
-import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services';
 
 @Component({
   selector: 'sbm-auth-login',
@@ -13,24 +14,26 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./auth-login.component.scss']
 })
 
-export class AuthLoginComponent implements OnInit {
+export class AuthLoginComponent extends Submit implements OnInit {
   @ViewChild(AddAlertDirective) addAlert: AddAlertDirective;
   componentRef: ComponentRef<AlertComponent>;
-  submitted: boolean = false;
+  credentials: Credential = { email: '', password: '' };
   constructor(
-    private userService: UserService,
-    private resolver: ComponentFactoryResolver, 
-    private navCtrl : Router
-  ) { }
+    private auth: AuthService,
+    private resolver: ComponentFactoryResolver,
+    private navCtrl: Router
+  ) { super(); }
 
   ngOnInit() {
-    console.log(this.submitted);
+    this.emailCtrl = new FormControl('', Validators.email);
   }
 
-  login(credentials: Credential) {
-    this.submit();
-    this.userService.login(credentials)
-      .then(_=>this.navCtrl.navigate(['/admin']))
+  login() {
+    this.toggleSubmit();
+    this.auth.login(this.credentials)
+      .then(_ => {
+        this.navCtrl.navigate(['/admin']);
+      })
       .catch(this.loginError);
   }
 
@@ -55,6 +58,6 @@ export class AuthLoginComponent implements OnInit {
   loginError = (error) => {
     console.log(error);
     this.showAlert("Email ou mot de pass incorrect !!!");
-    this.submit();
+    this.toggleSubmit();
   }
 }

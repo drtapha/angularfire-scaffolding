@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthLoginComponent } from './auth-login/auth-login.component';
 import { AuthRegisterComponent } from './auth-register/auth-register.component';
 import { AuthResetPasswordComponent } from './auth-reset-password/auth-reset-password.component';
+import { AuthProfilComponent } from './auth-profil/auth-profil.component'
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'reset_password',
     component: AuthResetPasswordComponent
+  },
+  {
+    path: 'profil',
+    component: AuthProfilComponent
+
   }
 
 ]
