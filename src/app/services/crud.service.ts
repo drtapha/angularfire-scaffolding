@@ -8,7 +8,7 @@ import {
 
 @Injectable()
 export class CrudService<T>{
-  url: string;
+  protected url: string;
 
   constructor(private angularFire: AngularFire) {}
   push(item: T) {
@@ -20,8 +20,8 @@ export class CrudService<T>{
   remove(key  : string){
     return this.list().remove(key); 
   }
-  set(value : T){
-    return this.object().set(value); 
+  set(url : string, value : T){
+    return this.object(url).set(value); 
   }
   updateObject(value : T){
     return this.object().update(value);
@@ -32,7 +32,7 @@ export class CrudService<T>{
   list(){
     return this.angularFire.database.list(this.url); 
   }
-  object(){
-    return this.angularFire.database.object(this.url); 
+  object(url = this.url){
+    return this.angularFire.database.object(url); 
   }
 }

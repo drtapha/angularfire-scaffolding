@@ -1,9 +1,26 @@
 <md-card>
-    <md-card-title class="flex-container" fxLayout="row">
-      Users
-      <span fxFlex></span>
-      <button md-button color="primary" (click)="openDialog()">créer</button>
-    </md-card-title>
-    <md-card-content>
-    </md-card-content>
+  <md-card-title class="flex-container" fxLayout="row">
+    Users
+    <span fxFlex></span>
+    <button md-button color="primary" (click)="openDialog()">créer</button>
+  </md-card-title>
+  <md-card-content>
+    <md-list>
+
+      <md-list-item *ngFor="let user of users | async">
+        <h4 md-line>{{user.email}}</h4>
+        <md-button-toggle-group #group="mdButtonToggleGroup" value="tapha">
+          <md-button-toggle value="dr">
+            admin
+          </md-button-toggle>
+          <md-button-toggle value="tapha" >
+            technicien
+          </md-button-toggle>
+          <md-button-toggle value="lol">
+            blabla
+          </md-button-toggle>
+        </md-button-toggle-group>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
 </md-card>

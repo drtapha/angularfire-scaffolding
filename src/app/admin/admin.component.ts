@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { AuthService } from '../services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,17 +9,16 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
   user;
-  constructor(public UserService : UserService, public navCtrl : Router) { }
+  constructor(public authService : AuthService, public navCtrl : Router) { }
 
   ngOnInit() {
-     this.UserService.getCurrentUser().subscribe((user)=>{
+     this.authService.getCurrentUser().subscribe((user)=>{
         this.user = user; 
-        console.log(user.displayName);
      })
   }
 
   logout(){
-    this.UserService.logout().then(_=> this.navCtrl.navigate(['/login'])); 
+    this.authService.logout().then(_=> this.navCtrl.navigate(['/login'])); 
   }
 
 }

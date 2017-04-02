@@ -14,7 +14,7 @@ export class RegisterComponent extends Submit implements OnInit {
   passwordForm: FormGroup;
   password: FormControl;
   confirmPassword: FormControl;
-  done: EventEmitter<any> = new EventEmitter();
+  @Output() done: EventEmitter<any> = new EventEmitter();
   constructor(
     private auth: AuthService,
     private formBuilder: FormBuilder
@@ -25,7 +25,7 @@ export class RegisterComponent extends Submit implements OnInit {
   }
 
   register() {
-    let credentials: Credential = {
+    const credentials: Credential = {
       email: this.emailCtrl.value,
       password: this.password.value
     };
@@ -34,7 +34,7 @@ export class RegisterComponent extends Submit implements OnInit {
 
     this.auth.register(credentials).then((user) => {
       this.toggleSubmit();
-      this.done.emit(user);
+      this.done.emit(user.auth);
     }).catch(error =>{ console.log(error); this.toggleSubmit(); });
   }
   

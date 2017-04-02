@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
 
+import { UserService } from '../../../services';
 
 
 import { UsersFormsComponent } from '../users-forms/users-forms.component';
@@ -11,10 +12,12 @@ import { UsersFormsComponent } from '../users-forms/users-forms.component';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
-  
-  constructor(public dialog : MdDialog) { }
+  users;
+  constructor(private dialog : MdDialog, private userService : UserService) { }
 
   ngOnInit() {
+   this.users = this.userService.list();
+     
   }
 
   openDialog(){

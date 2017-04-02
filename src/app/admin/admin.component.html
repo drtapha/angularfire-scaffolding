@@ -9,18 +9,15 @@
         <md-sidenav opened="true" mode="side">
             <md-nav-list>
                 <md-list-item>
-                    <span md-line>Réduire</span>
-                    <button md-icon-button (click)="showInfo(link)">
-                        <md-icon>keyboard_arrow_left</md-icon>
-                    </button>
+                    <span md-line>Dashboard</span>
                 </md-list-item>
                 <md-divider></md-divider>
-                <h3 md-subheader>Gérer</h3>
+                <h3 md-subheader>Créer</h3>
+                <md-list-item>
+                    <a md-line routerLink="interventions">interventions</a>
+                </md-list-item>
                 <md-list-item>
                     <a md-line routerLink="users">Utilisateurs</a>
-                    <button md-icon-button (click)="showInfo(link)">
-                        <md-icon>keyboard_arrow_left</md-icon>
-                    </button>
                 </md-list-item>
             </md-nav-list>
         </md-sidenav>

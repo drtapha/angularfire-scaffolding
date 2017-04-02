@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../services';
 
 import { User } from '../../../entities/user';
 
@@ -11,19 +11,17 @@ import { User } from '../../../entities/user';
   styleUrls: ['./users-forms.component.css']
 })
 export class UsersFormsComponent implements OnInit {
-  user : User = new User(); 
   constructor(
-    public dialog : MdDialogRef<UsersFormsComponent>, 
-    public userService : UserService
-    ) { }
+    private dialog : MdDialogRef<UsersFormsComponent>, 
+    private userService : UserService
 
+    ) { }
+   
   ngOnInit() {
   }
 
-  createOrUpdate(form){
-    console.log(form); 
-   /* this.userService.register(this.user).then(()=>{
-      alert("Utilisateur ajouté avec succés"); 
-    })*/
+  save(user){
+      console.log(user);
+      this.userService.save(user).then(_=> this.dialog.close());
   }
 }

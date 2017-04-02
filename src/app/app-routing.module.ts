@@ -9,7 +9,7 @@ const routes : Routes = [
       redirectTo : "/login",
       pathMatch : "full"
     } 
-]
+];
 
 @NgModule({
   imports: [

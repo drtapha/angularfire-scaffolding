@@ -6,7 +6,7 @@ import { InterventionsListComponent } from './interventions-list/interventions-l
   imports: [
     CommonModule
   ],
-  declarations: [InterventionsModule], 
+  declarations: [InterventionsModule, InterventionsListComponent], 
   exports : [ InterventionsListComponent]
 })
 export class InterventionsModule { }
